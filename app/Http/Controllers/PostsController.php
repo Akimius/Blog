@@ -10,11 +10,15 @@ class PostsController extends Controller
 {
     public function index()
     {
-        return view('posts.index'); // complete path is posts.index.blade.php
+        $posts = Post::latest()->all();
+        // $posts = Post::orderBy('created_at', 'desc')->get();
+
+        return view('posts.index', compact('posts'));
     }
-    public function show()
+    public function show(Post $post)
     {
-        return view('posts.show'); // complete path is posts.index.blade.php
+
+        return view('posts.show', compact('post'));
     }
     public function create()
     {
