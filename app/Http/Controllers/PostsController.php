@@ -10,8 +10,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->all();
-        // $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::latest()->get(); // Or: $posts = Post::orderBy('created_at', 'desc')->get();
 
         return view('posts.index', compact('posts'));
     }
